@@ -38,8 +38,17 @@ async function searchMovie(query) {
     );
     return { movies };
   } catch (error) {
-    console.error("Error searching movies: ", error.message);
-    throw new Error(error.message);
+    // console.error("Error searching movies: ", error.message);
+    // throw new Error(error.message);
+    console.error(
+      "TMDB API Error:",
+      error.response?.data || error.message || error
+    );
+    throw new Error(
+      error.response?.data?.status_message ||
+        error.message ||
+        "Unknown TMDB error"
+    );
   }
 }
 

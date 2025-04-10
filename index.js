@@ -2,11 +2,13 @@ const express = require("express");
 const cors = require("cors");
 const { sequelize } = require("./models");
 require("dotenv").config();
-const { searchMovies } = require("./controllers/movieController.js");
+const { searchMovies } = require("./controllers/movieController");
 const app = express();
 
+console.log("API KEY:", process.env.API_KEY);
+
 app.use(express.json());
-app.use(cors);
+app.use(cors());
 
 //routes
 app.get("/api/movies/search", searchMovies);

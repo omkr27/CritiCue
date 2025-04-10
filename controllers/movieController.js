@@ -1,4 +1,4 @@
-const { searchMovie } = require("../services/tmdbService.js");
+const { searchMovie } = require("../services/tmdbService");
 const { Movie } = require("../models");
 const { Op } = require("sequelize");
 
@@ -14,8 +14,11 @@ const searchMovies = async (req, res) => {
 
     return res.status(200).json(data);
   } catch (error) {
-    console.error("Error from controller", error.message);
-    return res.status(500).json({ error: error + "folder controller" });
+    console.error("Full error from controller:", error);
+    //console.error("Error from controller", error.message);
+    return res
+      .status(500)
+      .json({ error: error.message || "Unknown error in controller" });
   }
 };
 
