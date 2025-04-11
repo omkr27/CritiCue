@@ -2,6 +2,7 @@ const { searchMovie } = require("../services/tmdbService");
 const { Movie } = require("../models");
 const { Op } = require("sequelize");
 
+//controller function
 const searchMovies = async (req, res) => {
   const { query } = req.query;
 
