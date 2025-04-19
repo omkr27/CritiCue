@@ -1,10 +1,8 @@
 const { axiosInstance } = require("../lib/axios");
 const { movie } = require("../models");
 const axios = require("axios");
-// const axiosRetry = require("axios-retry").default; // axios-retry package for retry logic
-// require("dotenv").config();
 
-// axiosRetry(axios, { retries: 3, retryDelay: axiosRetry.exponentialDelay });
+require("dotenv").config();
 
 //Get actors for a specific movie from TMDB
 async function getActors(movieId) {

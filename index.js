@@ -7,6 +7,10 @@ const {
   addMovieToWatchList,
   addMoviesToWishlist,
   addMoviesToCuratedList,
+  addReview,
+  searchByGenreAndActor,
+  sortMovies,
+  getTopFiveMovies,
 } = require("./controllers/movieController");
 const {
   createCuratedList,
@@ -22,6 +26,12 @@ app.use(cors());
 //routes
 app.get("/api/movies/search", searchMovies);
 
+app.get("/api/movies/searchByGenreAndActor", searchByGenreAndActor);
+
+app.get("/api/movies/sort", sortMovies);
+
+app.get("/api/movies/top5", getTopFiveMovies);
+
 //post endpoint to create curated list
 app.post("/api/curated-lists", createCuratedList);
 
@@ -32,6 +42,8 @@ app.post("/api/movies/watchlist", addMovieToWatchList);
 app.post("/api/movies/wishlist", addMoviesToWishlist);
 
 app.post("/api/movies/curated-list", addMoviesToCuratedList);
+
+app.post("/api/movies/:movieId/reviews", addReview);
 
 //connect to database
 sequelize
